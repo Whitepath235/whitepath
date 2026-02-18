@@ -1,0 +1,1623 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>WhitePath Clearing Co. | Snow Removal Services</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Fast, reliable, 24/7 snow removal for homes and businesses. Seasonal contracts, per-visit, emergency service, and ice management." />
+  <style>
+    :root {
+      --primary: #1e88e5;
+      --primary-dark: #0d47a1;
+      --accent: #ffca28;
+      --bg: #050816;
+      --bg-alt: #0b1020;
+      --text: #f5f7ff;
+      --muted: #a0acc8;
+      --danger: #ef5350;
+      --success: #66bb6a;
+      --card: #111827;
+      --border: #1f2937;
+      --radius-lg: 18px;
+      --radius-md: 12px;
+      --radius-sm: 8px;
+      --shadow-soft: 0 18px 45px rgba(0, 0, 0, 0.55);
+      --shadow-subtle: 0 10px 30px rgba(0, 0, 0, 0.35);
+      --transition-fast: 0.18s ease-out;
+      --transition-med: 0.25s ease-out;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text",
+        "Segoe UI", sans-serif;
+      background: radial-gradient(circle at top, #1e293b 0, #020617 55%);
+      color: var(--text);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    .page {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Layout */
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 40;
+      backdrop-filter: blur(18px);
+      background: linear-gradient(
+        to bottom,
+        rgba(2, 6, 23, 0.96),
+        rgba(2, 6, 23, 0.86),
+        transparent
+      );
+      border-bottom: 1px solid rgba(148, 163, 184, 0.18);
+    }
+
+    .nav {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 0.75rem 1.25rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1.5rem;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .brand-logo {
+      width: 40px;
+      height: 40px;
+      border-radius: 14px;
+      background: radial-gradient(circle at 30% 20%, #e3f2fd, #1e88e5);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #0b1020;
+      font-weight: 800;
+      font-size: 1.1rem;
+      box-shadow: 0 10px 30px rgba(30, 136, 229, 0.55);
+    }
+
+    .brand-text {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .brand-text span:first-child {
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      font-size: 0.95rem;
+      text-transform: uppercase;
+    }
+
+    .brand-text span:last-child {
+      font-size: 0.78rem;
+      color: var(--muted);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 1.25rem;
+      font-size: 0.9rem;
+    }
+
+    .nav-links a {
+      color: var(--muted);
+      position: relative;
+      padding-bottom: 0.15rem;
+      transition: color var(--transition-fast);
+    }
+
+    .nav-links a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 0;
+      height: 2px;
+      border-radius: 999px;
+      background: linear-gradient(90deg, var(--accent), var(--primary));
+      transition: width var(--transition-fast);
+    }
+
+    .nav-links a:hover {
+      color: var(--text);
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    .nav-cta {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .pill {
+      font-size: 0.75rem;
+      padding: 0.25rem 0.7rem;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.4);
+      color: var(--muted);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+    }
+
+    .pill-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 999px;
+      background: radial-gradient(circle, #4ade80, #16a34a);
+      box-shadow: 0 0 0 6px rgba(34, 197, 94, 0.18);
+    }
+
+    .btn {
+      border-radius: 999px;
+      padding: 0.55rem 1.2rem;
+      border: none;
+      cursor: pointer;
+      font-size: 0.9rem;
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      transition: transform var(--transition-fast),
+        box-shadow var(--transition-fast), background var(--transition-fast),
+        color var(--transition-fast);
+      white-space: nowrap;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+      color: #e3f2fd;
+      box-shadow: 0 12px 30px rgba(37, 99, 235, 0.55);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 16px 40px rgba(37, 99, 235, 0.7);
+    }
+
+    .btn-outline {
+      background: transparent;
+      color: var(--muted);
+      border: 1px solid rgba(148, 163, 184, 0.5);
+    }
+
+    .btn-outline:hover {
+      background: rgba(15, 23, 42, 0.9);
+      color: var(--text);
+    }
+
+    .btn-icon {
+      font-size: 1.1rem;
+    }
+
+    .nav-toggle {
+      display: none;
+      background: none;
+      border: none;
+      color: var(--text);
+      font-size: 1.4rem;
+      cursor: pointer;
+    }
+
+    main {
+      flex: 1;
+    }
+
+    .section {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 3.5rem 1.25rem;
+    }
+
+    /* Hero */
+
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 1.4fr) minmax(0, 1.1fr);
+      gap: 2.5rem;
+      align-items: center;
+      padding-top: 2.5rem;
+      padding-bottom: 3.5rem;
+    }
+
+    .hero-kicker {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.25rem 0.7rem;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.85);
+      border: 1px solid rgba(148, 163, 184, 0.4);
+      color: var(--muted);
+      font-size: 0.78rem;
+      margin-bottom: 1rem;
+    }
+
+    .hero-kicker span {
+      color: var(--accent);
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      font-size: 0.7rem;
+    }
+
+    .hero-title {
+      font-size: clamp(2.4rem, 3.1vw + 1.4rem, 3.4rem);
+      line-height: 1.05;
+      margin-bottom: 1rem;
+      letter-spacing: -0.03em;
+    }
+
+    .hero-title span {
+      background: linear-gradient(120deg, #e3f2fd, #90caf9, #ffca28);
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+
+    .hero-subtitle {
+      color: var(--muted);
+      font-size: 0.98rem;
+      max-width: 32rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      margin-bottom: 1.75rem;
+    }
+
+    .hero-badge {
+      font-size: 0.78rem;
+      padding: 0.35rem 0.7rem;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.9);
+      border: 1px solid rgba(148, 163, 184, 0.4);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      color: var(--muted);
+    }
+
+    .hero-badge strong {
+      color: #e5e7eb;
+      font-weight: 600;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.9rem;
+      align-items: center;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero-note {
+      font-size: 0.8rem;
+      color: var(--muted);
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .hero-note-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      background: radial-gradient(circle, #4ade80, #16a34a);
+    }
+
+    .hero-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+      margin-top: 0.75rem;
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+
+    .hero-meta-item {
+      display: flex;
+      flex-direction: column;
+      gap: 0.1rem;
+    }
+
+    .hero-meta-item span:first-child {
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      font-size: 0.7rem;
+      color: #64748b;
+    }
+
+    .hero-meta-item span:last-child {
+      color: #e5e7eb;
+      font-weight: 500;
+    }
+
+    .hero-visual {
+      position: relative;
+    }
+
+    .hero-card {
+      background: radial-gradient(circle at top left, #1e293b, #020617);
+      border-radius: 26px;
+      padding: 1.4rem 1.4rem 1.2rem;
+      box-shadow: var(--shadow-soft);
+      border: 1px solid rgba(148, 163, 184, 0.35);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1rem;
+    }
+
+    .hero-card-title {
+      font-size: 0.9rem;
+      font-weight: 600;
+    }
+
+    .hero-card-pill {
+      font-size: 0.7rem;
+      padding: 0.2rem 0.6rem;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.9);
+      border: 1px solid rgba(148, 163, 184, 0.4);
+      color: var(--muted);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+    }
+
+    .hero-card-pill-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 999px;
+      background: radial-gradient(circle, #4ade80, #16a34a);
+    }
+
+    .hero-card-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 0.75rem;
+      margin-bottom: 1rem;
+    }
+
+    .hero-stat {
+      background: rgba(15, 23, 42, 0.9);
+      border-radius: 16px;
+      padding: 0.7rem 0.8rem;
+      border: 1px solid rgba(148, 163, 184, 0.35);
+      display: flex;
+      flex-direction: column;
+      gap: 0.15rem;
+    }
+
+    .hero-stat-label {
+      font-size: 0.7rem;
+      color: #9ca3af;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .hero-stat-value {
+      font-size: 0.95rem;
+      font-weight: 600;
+    }
+
+    .hero-stat-tag {
+      font-size: 0.7rem;
+      color: var(--muted);
+    }
+
+    .hero-timeline {
+      margin-top: 0.4rem;
+      padding-top: 0.6rem;
+      border-top: 1px dashed rgba(148, 163, 184, 0.4);
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+    }
+
+    .hero-timeline-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.78rem;
+      color: var(--muted);
+    }
+
+    .hero-timeline-item span:first-child {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+    }
+
+    .hero-timeline-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 999px;
+      background: #38bdf8;
+    }
+
+    .hero-floating {
+      position: absolute;
+      right: -10px;
+      bottom: -10px;
+      width: 150px;
+      height: 150px;
+      border-radius: 999px;
+      background: radial-gradient(circle at 30% 20%, #e3f2fd, #1e88e5);
+      opacity: 0.16;
+      filter: blur(2px);
+    }
+
+    .hero-badge-floating {
+      position: absolute;
+      right: -0.4rem;
+      top: 1.2rem;
+      background: rgba(15, 23, 42, 0.96);
+      border-radius: 999px;
+      padding: 0.35rem 0.7rem;
+      border: 1px solid rgba(148, 163, 184, 0.5);
+      font-size: 0.75rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      box-shadow: var(--shadow-subtle);
+    }
+
+    .hero-badge-floating span:first-child {
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      background: radial-gradient(circle, #facc15, #f97316);
+    }
+
+    .hero-badge-floating span:last-child {
+      color: var(--muted);
+    }
+
+    .hero-tagline {
+      margin-top: 0.6rem;
+      font-size: 0.78rem;
+      color: #9ca3af;
+      display: flex;
+      align-items: center;
+      gap: 0.35rem;
+    }
+
+    .hero-tagline strong {
+      color: #e5e7eb;
+      font-weight: 600;
+    }
+
+    /* Section headings */
+
+    .section-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      gap: 1.5rem;
+      margin-bottom: 2rem;
+      flex-wrap: wrap;
+    }
+
+    .section-title-block {
+      max-width: 28rem;
+    }
+
+    .section-kicker {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: #64748b;
+      margin-bottom: 0.4rem;
+    }
+
+    .section-title {
+      font-size: 1.6rem;
+      letter-spacing: -0.02em;
+      margin-bottom: 0.4rem;
+    }
+
+    .section-title span {
+      color: var(--accent);
+    }
+
+    .section-subtitle {
+      font-size: 0.9rem;
+      color: var(--muted);
+    }
+
+    .section-meta {
+      font-size: 0.8rem;
+      color: var(--muted);
+      max-width: 22rem;
+    }
+
+    /* Services */
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1.4rem;
+    }
+
+    .card {
+      background: radial-gradient(circle at top, #020617, #020617);
+      border-radius: var(--radius-lg);
+      padding: 1.1rem 1.1rem 1rem;
+      border: 1px solid rgba(148, 163, 184, 0.35);
+      box-shadow: var(--shadow-subtle);
+      position: relative;
+      overflow: hidden;
+      transition: transform var(--transition-med),
+        box-shadow var(--transition-med), border-color var(--transition-med),
+        background var(--transition-med);
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 18px 45px rgba(15, 23, 42, 0.9);
+      border-color: rgba(96, 165, 250, 0.8);
+      background: radial-gradient(circle at top, #020617, #020617);
+    }
+
+    .card-label {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: #64748b;
+      margin-bottom: 0.35rem;
+    }
+
+    .card-title {
+      font-size: 1rem;
+      font-weight: 600;
+      margin-bottom: 0.4rem;
+    }
+
+    .card-body {
+      font-size: 0.86rem;
+      color: var(--muted);
+      margin-bottom: 0.7rem;
+    }
+
+    .card-list {
+      list-style: none;
+      font-size: 0.82rem;
+      color: var(--muted);
+      display: flex;
+      flex-direction: column;
+      gap: 0.25rem;
+      margin-bottom: 0.7rem;
+    }
+
+    .card-list li::before {
+      content: "•";
+      color: #60a5fa;
+      margin-right: 0.35rem;
+    }
+
+    .card-tag {
+      font-size: 0.75rem;
+      color: #9ca3af;
+    }
+
+    .card-accent {
+      position: absolute;
+      right: -30px;
+      top: -30px;
+      width: 80px;
+      height: 80px;
+      border-radius: 999px;
+      background: radial-gradient(circle at 30% 20%, #e3f2fd, #1e88e5);
+      opacity: 0.12;
+    }
+
+    /* Pricing */
+
+    .pricing-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+      gap: 1.6rem;
+      align-items: flex-start;
+    }
+
+    .pricing-card {
+      background: radial-gradient(circle at top, #020617, #020617);
+      border-radius: 22px;
+      padding: 1.3rem 1.3rem 1.1rem;
+      border: 1px solid rgba(148, 163, 184, 0.4);
+      box-shadow: var(--shadow-soft);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .pricing-pill {
+      font-size: 0.75rem;
+      padding: 0.25rem 0.7rem;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.9);
+      border: 1px solid rgba(148, 163, 184, 0.4);
+      color: var(--muted);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      margin-bottom: 0.6rem;
+    }
+
+    .pricing-pill span:first-child {
+      width: 7px;
+      height: 7px;
+      border-radius: 999px;
+      background: radial-gradient(circle, #22c55e, #16a34a);
+    }
+
+    .pricing-main-title {
+      font-size: 1.2rem;
+      margin-bottom: 0.3rem;
+    }
+
+    .pricing-main-sub {
+      font-size: 0.86rem;
+      color: var(--muted);
+      margin-bottom: 0.8rem;
+    }
+
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 0.8rem;
+      margin-bottom: 0.8rem;
+    }
+
+    .pricing-item {
+      background: rgba(15, 23, 42, 0.9);
+      border-radius: 16px;
+      padding: 0.7rem 0.8rem;
+      border: 1px solid rgba(148, 163, 184, 0.4);
+      font-size: 0.8rem;
+      color: var(--muted);
+      display: flex;
+      flex-direction: column;
+      gap: 0.25rem;
+    }
+
+    .pricing-item strong {
+      color: #e5e7eb;
+      font-size: 0.9rem;
+    }
+
+    .pricing-footnote {
+      font-size: 0.75rem;
+      color: #9ca3af;
+      margin-top: 0.4rem;
+    }
+
+    .pricing-side {
+      font-size: 0.85rem;
+      color: var(--muted);
+      display: flex;
+      flex-direction: column;
+      gap: 0.7rem;
+    }
+
+    .pricing-side-highlight {
+      padding: 0.7rem 0.8rem;
+      border-radius: 14px;
+      background: rgba(15, 23, 42, 0.9);
+      border: 1px dashed rgba(148, 163, 184, 0.5);
+      font-size: 0.8rem;
+    }
+
+    .pricing-side-highlight strong {
+      color: #e5e7eb;
+    }
+
+    /* Why us */
+
+    .why-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(0, 1.1fr);
+      gap: 1.6rem;
+      align-items: flex-start;
+    }
+
+    .pill-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+      margin-bottom: 1rem;
+    }
+
+    .pill-soft {
+      font-size: 0.78rem;
+      padding: 0.3rem 0.7rem;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.9);
+      border: 1px solid rgba(148, 163, 184, 0.4);
+      color: var(--muted);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+    }
+
+    .pill-soft span {
+      width: 7px;
+      height: 7px;
+      border-radius: 999px;
+      background: #60a5fa;
+    }
+
+    .why-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+      font-size: 0.86rem;
+      color: var(--muted);
+    }
+
+    .why-list li {
+      display: flex;
+      gap: 0.5rem;
+    }
+
+    .why-list li::before {
+      content: "✓";
+      color: #4ade80;
+      margin-top: 0.05rem;
+    }
+
+    .why-panel {
+      background: radial-gradient(circle at top, #020617, #020617);
+      border-radius: 20px;
+      padding: 1rem 1rem 0.9rem;
+      border: 1px solid rgba(148, 163, 184, 0.4);
+      box-shadow: var(--shadow-subtle);
+      font-size: 0.82rem;
+      color: var(--muted);
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+    }
+
+    .why-panel-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.8rem;
+    }
+
+    .why-panel-header strong {
+      color: #e5e7eb;
+    }
+
+    .why-panel-tag {
+      font-size: 0.72rem;
+      padding: 0.2rem 0.6rem;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.9);
+      border: 1px solid rgba(148, 163, 184, 0.4);
+    }
+
+    .why-panel-metric {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.8rem;
+    }
+
+    .why-panel-metric span:first-child {
+      color: #9ca3af;
+    }
+
+    .why-panel-metric span:last-child {
+      color: #e5e7eb;
+      font-weight: 500;
+    }
+
+    /* Contact */
+
+    .contact-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(0, 1.1fr);
+      gap: 1.6rem;
+      align-items: flex-start;
+    }
+
+    .contact-card {
+      background: radial-gradient(circle at top, #020617, #020617);
+      border-radius: 22px;
+      padding: 1.3rem 1.3rem 1.1rem;
+      border: 1px solid rgba(148, 163, 184, 0.4);
+      box-shadow: var(--shadow-soft);
+    }
+
+    .contact-row {
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+      margin-bottom: 0.9rem;
+      font-size: 0.86rem;
+      color: var(--muted);
+    }
+
+    .contact-row strong {
+      color: #e5e7eb;
+    }
+
+    .contact-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.8rem;
+      margin-top: 0.4rem;
+    }
+
+    .contact-meta {
+      font-size: 0.8rem;
+      color: #9ca3af;
+      margin-top: 0.6rem;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 0.7rem;
+      font-size: 0.85rem;
+    }
+
+    .field {
+      display: flex;
+      flex-direction: column;
+      gap: 0.25rem;
+    }
+
+    .field label {
+      font-size: 0.8rem;
+      color: #cbd5f5;
+    }
+
+    .field input,
+    .field textarea,
+    .field select {
+      background: rgba(15, 23, 42, 0.95);
+      border-radius: 10px;
+      border: 1px solid rgba(148, 163, 184, 0.5);
+      padding: 0.55rem 0.7rem;
+      color: var(--text);
+      font-family: inherit;
+      font-size: 0.85rem;
+      outline: none;
+      transition: border-color var(--transition-fast),
+        box-shadow var(--transition-fast), background var(--transition-fast);
+    }
+
+    .field input:focus,
+    .field textarea:focus,
+    .field select:focus {
+      border-color: #60a5fa;
+      box-shadow: 0 0 0 1px rgba(37, 99, 235, 0.6);
+      background: rgba(15, 23, 42, 0.98);
+    }
+
+    .field small {
+      font-size: 0.75rem;
+      color: #9ca3af;
+    }
+
+    textarea {
+      min-height: 90px;
+      resize: vertical;
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 0.7rem;
+    }
+
+    .form-status {
+      font-size: 0.8rem;
+      margin-top: 0.4rem;
+      min-height: 1.1rem;
+    }
+
+    .form-status.success {
+      color: var(--success);
+    }
+
+    .form-status.error {
+      color: var(--danger);
+    }
+
+    /* Footer */
+
+    footer {
+      border-top: 1px solid rgba(148, 163, 184, 0.25);
+      margin-top: 1rem;
+    }
+
+    .footer-inner {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 1.4rem 1.25rem 1.6rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.78rem;
+      color: #9ca3af;
+    }
+
+    .footer-inner strong {
+      color: #e5e7eb;
+    }
+
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.9rem;
+    }
+
+    .footer-links a {
+      color: #9ca3af;
+    }
+
+    .footer-links a:hover {
+      color: #e5e7eb;
+    }
+
+    /* Responsive */
+
+    @media (max-width: 960px) {
+      .hero {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .hero-visual {
+        order: -1;
+      }
+
+      .pricing-layout,
+      .why-layout,
+      .contact-layout {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .grid-3 {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 720px) {
+      .nav {
+        padding-inline: 1rem;
+      }
+
+      .nav-links {
+        display: none;
+      }
+
+      .nav-toggle {
+        display: block;
+      }
+
+      .nav.open .nav-links {
+        display: flex;
+        position: absolute;
+        top: 56px;
+        left: 0;
+        right: 0;
+        padding: 0.75rem 1.25rem 0.9rem;
+        background: rgba(2, 6, 23, 0.98);
+        border-bottom: 1px solid rgba(148, 163, 184, 0.25);
+      }
+
+      .nav-links {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.6rem;
+      }
+
+      .hero {
+        padding-top: 1.8rem;
+      }
+
+      .section {
+        padding-inline: 1rem;
+      }
+
+      .grid-3 {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .form-row {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header>
+      <nav class="nav" id="nav">
+        <div class="brand">
+          <div class="brand-logo">WP</div>
+          <div class="brand-text">
+            <span>WhitePath Clearing Co.</span>
+            <span>Snow & ice removal specialists</span>
+          </div>
+        </div>
+        <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
+          ☰
+        </button>
+        <div class="nav-links">
+          <a href="#services">Services</a>
+          <a href="#pricing">Pricing</a>
+          <a href="#why">Why us</a>
+          <a href="#contact">Contact</a>
+        </div>
+        <div class="nav-cta">
+          <div class="pill">
+            <span class="pill-dot"></span>
+            24/7 storm response
+          </div>
+          <a href="tel:+37122021962" class="btn btn-primary">
+            <span class="btn-icon">📞</span>
+            Call +371 2202 1962
+          </a>
+        </div>
+      </nav>
+    </header>
+
+    <main>
+      <!-- Hero -->
+      <section class="section hero" id="top">
+        <div>
+          <div class="hero-kicker">
+            <span>New</span> Seasonal contracts now open for booking
+          </div>
+          <h1 class="hero-title">
+            Fast, reliable <span>snow removal</span> for homes & businesses.
+          </h1>
+          <p class="hero-subtitle">
+            WhitePath Clearing Co. keeps your driveways, walkways, and parking lots safe and accessible all winter long—with 24/7 on‑call support during storms.
+          </p>
+
+          <div class="hero-badges">
+            <div class="hero-badge">
+              <strong>Residential & commercial</strong> coverage
+            </div>
+            <div class="hero-badge">
+              <strong>Seasonal contracts</strong> for predictable costs
+            </div>
+            <div class="hero-badge">
+              <strong>Emergency call‑outs</strong> at premium priority
+            </div>
+          </div>
+
+          <div class="hero-actions">
+            <a href="tel:+37122021962" class="btn btn-primary">
+              <span class="btn-icon">📞</span>
+              Call now: +371 2202 1962
+            </a>
+            <a href="#contact" class="btn btn-outline">
+              Get a free winter quote →
+            </a>
+          </div>
+
+          <div class="hero-note">
+            <span class="hero-note-dot"></span>
+            Guaranteed response within 6 hours of snowfall for contract clients.
+          </div>
+
+          <div class="hero-meta">
+            <div class="hero-meta-item">
+              <span>Coverage</span>
+              <span>Driveways, walkways, parking lots, roofs</span>
+            </div>
+            <div class="hero-meta-item">
+              <span>Service model</span>
+              <span>Seasonal, per‑visit & emergency</span>
+            </div>
+            <div class="hero-meta-item">
+              <span>Safety</span>
+              <span>Salting, sanding & ice management</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-visual">
+          <div class="hero-card">
+            <div class="hero-card-header">
+              <div>
+                <div class="hero-card-title">Storm dashboard</div>
+                <div style="font-size: 0.78rem; color: #9ca3af;">
+                  Live overview of active snow events
+                </div>
+              </div>
+              <div class="hero-card-pill">
+                <span class="hero-card-pill-dot"></span>
+                Crews on the move
+              </div>
+            </div>
+
+            <div class="hero-card-grid">
+              <div class="hero-stat">
+                <div class="hero-stat-label">Residential routes</div>
+                <div class="hero-stat-value">38 driveways</div>
+                <div class="hero-stat-tag">Cleared before 7:00 AM</div>
+              </div>
+              <div class="hero-stat">
+                <div class="hero-stat-label">Commercial sites</div>
+                <div class="hero-stat-value">6 properties</div>
+                <div class="hero-stat-tag">GPS‑tracked proof of service</div>
+              </div>
+              <div class="hero-stat">
+                <div class="hero-stat-label">Average response</div>
+                <div class="hero-stat-value">3.4 hours</div>
+                <div class="hero-stat-tag">From snowfall to clear access</div>
+              </div>
+              <div class="hero-stat">
+                <div class="hero-stat-label">Safety coverage</div>
+                <div class="hero-stat-value">100%</div>
+                <div class="hero-stat-tag">Salting & de‑icing applied</div>
+              </div>
+            </div>
+
+            <div class="hero-timeline">
+              <div class="hero-timeline-item">
+                <span>
+                  <span class="hero-timeline-dot"></span>
+                  02:15 — Snowfall alert received
+                </span>
+                <span>Automated dispatch</span>
+              </div>
+              <div class="hero-timeline-item">
+                <span>
+                  <span class="hero-timeline-dot" style="background:#22c55e;"></span>
+                  04:40 — Residential routes cleared
+                </span>
+                <span>Clients notified by SMS</span>
+              </div>
+              <div class="hero-timeline-item">
+                <span>
+                  <span class="hero-timeline-dot" style="background:#f97316;"></span>
+                  06:05 — Commercial lots finished
+                </span>
+                <span>GPS logs archived</span>
+              </div>
+            </div>
+
+            <div class="hero-tagline">
+              <strong>Real‑time updates</strong> for commercial clients who need proof of service.
+            </div>
+
+            <div class="hero-floating"></div>
+            <div class="hero-badge-floating">
+              <span></span>
+              <span>Storm‑ready 24/7 all winter</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Services -->
+      <section class="section" id="services">
+        <div class="section-header">
+          <div class="section-title-block">
+            <div class="section-kicker">Services</div>
+            <h2 class="section-title">
+              Snow & ice removal for <span>every property type.</span>
+            </h2>
+            <p class="section-subtitle">
+              From single driveways to busy commercial lots, WhitePath Clearing Co. is built to keep your spaces safe, accessible, and compliant all winter long.
+            </p>
+          </div>
+          <div class="section-meta">
+            Fast dispatch, clear communication, and safety‑first operations—backed by the right equipment and a skilled crew.
+          </div>
+        </div>
+
+        <div class="grid-3">
+          <article class="card">
+            <div class="card-accent"></div>
+            <div class="card-label">Residential</div>
+            <h3 class="card-title">Home & rental snow removal</h3>
+            <p class="card-body">
+              Reliable snow clearing for homeowners, rental properties, elderly residents, and vacation homes—so you never wake up snowed in.
+            </p>
+            <ul class="card-list">
+              <li>Driveway plowing & snow blowing</li>
+              <li>Walkway & step shoveling</li>
+              <li>Salting & de‑icing for safety</li>
+              <li>Optional seasonal subscription model</li>
+            </ul>
+            <div class="card-tag">
+              Ideal for 30–50 residential clients per truck.
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="card-accent"></div>
+            <div class="card-label">Commercial</div>
+            <h3 class="card-title">Business & property snow management</h3>
+            <p class="card-body">
+              Higher‑value, recurring contracts for commercial properties that can’t afford downtime or unsafe access during storms.
+            </p>
+            <ul class="card-list">
+              <li>Parking lots & loading areas</li>
+              <li>Retail plazas & office buildings</li>
+              <li>Apartment & industrial complexes</li>
+              <li>GPS‑tracked proof of service</li>
+            </ul>
+            <div class="card-tag">
+              Designed for 3–5 commercial clients per truck.
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="card-accent"></div>
+            <div class="card-label">Add‑ons & emergency</div>
+            <h3 class="card-title">Premium & safety‑critical services</h3>
+            <p class="card-body">
+              When winter hits hard, we offer premium, on‑call services and specialized add‑ons to keep your property fully protected.
+            </p>
+            <ul class="card-list">
+              <li>Emergency / on‑call snow removal</li>
+              <li>Salting, sanding & ice management</li>
+              <li>Roof snow removal & snow hauling</li>
+              <li>Sidewalk & gutter clearing</li>
+            </ul>
+            <div class="card-tag">
+              Priority response for emergency and contract clients.
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- Pricing -->
+      <section class="section" id="pricing">
+        <div class="section-header">
+          <div class="section-title-block">
+            <div class="section-kicker">Pricing model</div>
+            <h2 class="section-title">
+              Simple, transparent <span>winter pricing.</span>
+            </h2>
+            <p class="section-subtitle">
+              Choose between predictable seasonal contracts, flexible per‑visit pricing, or premium emergency call‑outs—plus add‑on services for full coverage.
+            </p>
+          </div>
+          <div class="section-meta">
+            We’ll tailor a package based on your property size, risk level, and how often you want automatic clearing after snowfall.
+          </div>
+        </div>
+
+        <div class="pricing-layout">
+          <div class="pricing-card">
+            <div class="pricing-pill">
+              <span></span>
+              Most profitable for both sides
+            </div>
+            <h3 class="pricing-main-title">Seasonal contracts</h3>
+            <p class="pricing-main-sub">
+              One fixed fee for the entire winter season—ideal for both residential and commercial clients who want guaranteed coverage and predictable costs.
+            </p>
+
+            <div class="pricing-grid">
+              <div class="pricing-item">
+                <strong>Residential seasonal</strong>
+                <span>Flat winter rate based on driveway length, walkway coverage, and typical snowfall.</span>
+              </div>
+              <div class="pricing-item">
+                <strong>Commercial seasonal</strong>
+                <span>Custom contracts for plazas, offices, and complexes with defined service triggers and response times.</span>
+              </div>
+              <div class="pricing-item">
+                <strong>Per‑visit pricing</strong>
+                <span>Pay per snowfall event—perfect for flexible or lower‑risk properties.</span>
+              </div>
+              <div class="pricing-item">
+                <strong>Emergency / on‑call</strong>
+                <span>Premium rates for urgent, unscheduled clearing during heavy storms.</span>
+              </div>
+            </div>
+
+            <p class="pricing-footnote">
+              Add‑on services like salting, roof snow removal, and snow hauling can be bundled into your contract or billed separately.
+            </p>
+          </div>
+
+          <div class="pricing-side">
+            <div class="pricing-side-highlight">
+              <strong>Smart way to budget winter:</strong><br />
+              Seasonal contracts give you predictable cash flow and guaranteed response times—no surprise invoices after every storm.
+            </div>
+            <p>
+              We’ll walk your property (or review site plans) and recommend the best mix of seasonal, per‑visit, and emergency coverage based on your risk tolerance and budget.
+            </p>
+            <p>
+              <strong>Commercial clients</strong> often benefit most from seasonal contracts with clearly defined service levels, while <strong>residential clients</strong> can choose between subscription‑style seasonal plans or per‑visit clearing.
+            </p>
+            <p>
+              Ready for numbers? Use the form below or call us at <strong>+371 2202 1962</strong> and we’ll prepare a tailored quote for your property.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Why us -->
+      <section class="section" id="why">
+        <div class="section-header">
+          <div class="section-title-block">
+            <div class="section-kicker">Why WhitePath</div>
+            <h2 class="section-title">
+              Built to stand out in a <span>snowstorm.</span>
+            </h2>
+            <p class="section-subtitle">
+              We combine reliable equipment, skilled operators, and smart systems to deliver a snow‑removal service that feels proactive—not reactive.
+            </p>
+          </div>
+          <div class="section-meta">
+            Guaranteed response times, real‑time updates, and GPS tracking give you confidence that your property is handled—even while you sleep.
+          </div>
+        </div>
+
+        <div class="why-layout">
+          <div>
+            <div class="pill-row">
+              <div class="pill-soft">
+                <span></span> Guaranteed response within 6 hours
+              </div>
+              <div class="pill-soft">
+                <span style="background:#22c55e;"></span> Real‑time service updates
+              </div>
+              <div class="pill-soft">
+                <span style="background:#f97316;"></span> GPS‑tracked commercial routes
+              </div>
+            </div>
+
+            <ul class="why-list">
+              <li>
+                Guaranteed response times for contract clients—so you know exactly when your property will be cleared after snowfall.
+              </li>
+              <li>
+                Subscription‑style residential plans that remove the hassle of booking every time it snows.
+              </li>
+              <li>
+                Real‑time updates and proof of service for commercial properties that need documentation for tenants, customers, or insurers.
+              </li>
+              <li>
+                Safety‑first approach with salting, sanding, and ice management to reduce slips, falls, and liability.
+              </li>
+              <li>
+                Professional equipment, maintained regularly, and operated by trained crews who understand winter conditions.
+              </li>
+            </ul>
+          </div>
+
+          <aside class="why-panel">
+            <div class="why-panel-header">
+              <strong>Operations snapshot</strong>
+              <div class="why-panel-tag">1 truck · 1 blower · 1 crew</div>
+            </div>
+            <p>
+              A lean, well‑organized operation can handle <strong>30–50 residential clients</strong> and <strong>3–5 commercial clients</strong> per season—while still delivering fast, reliable service.
+            </p>
+            <div class="why-panel-metric">
+              <span>Dispatch & routing</span>
+              <span>Weather‑driven, software‑assisted</span>
+            </div>
+            <div class="why-panel-metric">
+              <span>Equipment</span>
+              <span>Plow truck, snow blower, salt spreaders</span>
+            </div>
+            <div class="why-panel-metric">
+              <span>Key costs</span>
+              <span>Fuel, labor, maintenance, insurance</span>
+            </div>
+            <div class="why-panel-metric">
+              <span>Key partners</span>
+              <span>Hardware stores, suppliers, subcontractors</span>
+            </div>
+            <p>
+              As demand grows, we can scale by adding trucks, subcontractors, and extended coverage areas—without sacrificing response times or service quality.
+            </p>
+          </aside>
+        </div>
+      </section>
+
+      <!-- Contact -->
+      <section class="section" id="contact">
+        <div class="section-header">
+          <div class="section-title-block">
+            <div class="section-kicker">Contact</div>
+            <h2 class="section-title">
+              Let’s plan your <span>winter coverage.</span>
+            </h2>
+            <p class="section-subtitle">
+              Share a few details about your property and we’ll follow up with a tailored quote and recommended service plan.
+            </p>
+          </div>
+          <div class="section-meta">
+            Prefer to talk? Call us directly at <strong>+371 2202 1962</strong> for urgent requests or to discuss commercial contracts.
+          </div>
+        </div>
+
+        <div class="contact-layout">
+          <div class="contact-card">
+            <div class="contact-row">
+              <strong>Call or message</strong>
+              <span>Phone: <a href="tel:+37122021962">+371 2202 1962</a></span>
+              <span>Email: info@whitepathclearing.example</span>
+              <span>Service area: Local residential & commercial properties</span>
+            </div>
+
+            <div class="contact-actions">
+              <a href="tel:+37122021962" class="btn btn-primary">
+                <span class="btn-icon">📞</span>
+                Call now
+              </a>
+              <a href="#contact-form" class="btn btn-outline">
+                Request a quote →
+              </a>
+            </div>
+
+            <p class="contact-meta">
+              During active storms, contract clients receive priority dispatch and guaranteed response times.
+            </p>
+          </div>
+
+          <div>
+            <form id="contact-form" novalidate>
+              <div class="form-row">
+                <div class="field">
+                  <label for="name">Name</label>
+                  <input id="name" name="name" type="text" placeholder="Your full name" required />
+                </div>
+                <div class="field">
+                  <label for="email">Email</label>
+                  <input id="email" name="email" type="email" placeholder="you@example.com" required />
+                </div>
+              </div>
+
+              <div class="form-row">
+                <div class="field">
+                  <label for="phone">Phone</label>
+                  <input id="phone" name="phone" type="tel" placeholder="+371..." />
+                  <small>We’ll only use this to contact you about your quote.</small>
+                </div>
+                <div class="field">
+                  <label for="propertyType">Property type</label>
+                  <select id="propertyType" name="propertyType">
+                    <option value="">Select property type</option>
+                    <option value="residential">Residential home</option>
+                    <option value="rental">Rental / multi‑unit</option>
+                    <option value="commercial">Commercial property</option>
+                    <option value="industrial">Industrial / complex</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="field">
+                <label for="address">Property location</label>
+                <input id="address" name="address" type="text" placeholder="City, area, or full address" />
+              </div>
+
+              <div class="field">
+                <label for="services">Services needed</label>
+                <textarea id="services" name="services" placeholder="Tell us what you need: seasonal contract, per‑visit, emergency coverage, salting, roof snow removal, etc."></textarea>
+              </div>
+
+              <div class="field">
+                <label for="timing">When do you need coverage?</label>
+                <select id="timing" name="timing">
+                  <option value="">Select timing</option>
+                  <option value="season">Full winter season</option>
+                  <option value="month">Specific month(s)</option>
+                  <option value="storm">Per storm / on‑call</option>
+                  <option value="emergency">Emergency only</option>
+                </select>
+              </div>
+
+              <button type="submit" class="btn btn-primary">
+                Submit quote request
+              </button>
+              <div id="formStatus" class="form-status"></div>
+            </form>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="footer-inner">
+        <div>
+          <strong>WhitePath Clearing Co.</strong> — Snow & ice removal for homes and businesses.
+        </div>
+        <div class="footer-links">
+          <span>Phone: <a href="tel:+37122021962">+371 2202 1962</a></span>
+          <span>•</span>
+          <a href="#services">Services</a>
+          <a href="#pricing">Pricing</a>
+          <a href="#contact">Contact</a>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    // Mobile nav toggle
+    const nav = document.getElementById("nav");
+    const navToggle = document.getElementById("navToggle");
+    navToggle.addEventListener("click", () => {
+      nav.classList.toggle("open");
+    });
+
+    // Simple contact form handler (front‑end only)
+    const form = document.getElementById("contact-form");
+    const statusEl = document.getElementById("formStatus");
+
+    form.addEventListener("submit", (e) => {
+      e.preventDefault();
+      statusEl.textContent = "";
+      statusEl.className = "form-status";
+
+      const name = form.name.value.trim();
+      const email = form.email.value.trim();
+
+      if (!name || !email) {
+        statusEl.textContent = "Please fill in at least your name and email.";
+        statusEl.classList.add("error");
+        return;
+      }
+
+      // Here you would normally send the data to your backend with fetch()
+      // For now, we just show a success message.
+      form.reset();
+      statusEl.textContent = "Thank you! We’ve received your request and will contact you soon.";
+      statusEl.classList.add("success");
+    });
+  </script>
+</body>
+</html>
